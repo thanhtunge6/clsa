@@ -6,6 +6,7 @@ import optparse
 from sklearn import svm
 from bow import vocabulary, disjoint_voc, load
 from compress import compressed_dump, compressed_load
+import time
 
 class CLSAModel(object):
     def __init__(self, clf, Ws=None, Wt=None, G=None):
@@ -32,7 +33,9 @@ class CLSATrainer(object):
                   probability=False, shrinking=True, tol=0.001, verbose=False)
         allhxtrain = sda.transformsource(self.s_train.T,Ws,layers)
         print "Train SVM"
+        start = time.time()
         self.clf.fit(allhxtrain.T, np.ravel(self.s_train_labels))
+        print "Learning SVM took ",time.time()-start,"sec"
         return CLSAModel(self.clf, Ws=Ws, Wt=Wt, G=G)
 
 
@@ -145,7 +148,6 @@ def predict():
     fname_model = argv[0]
     fname_t_test = argv[1]
 
-    print "Load model"
     clsa_model = compressed_load(fname_model)
 
     clf = clsa_model.clf
@@ -157,7 +159,9 @@ def predict():
     layers = clsa_model.layers
 
     t_test, labels, classes = load(fname_t_test, t_voc, dim)
+    print "Transform target data"
     transformhxt = sda.transformtarget(t_test.T, G, Wt, layers)
+    print "Predict labels"
     y = clf.predict(transformhxt.T)
 
     print "Accuracy: ",np.sum(y == labels)/float(len(y))

@@ -17,6 +17,7 @@ def compressed_dump(fname, model):
     model : object
         The object to be pickeled.
     """
+    print "Write model"
     start = time.time()
     if fname.endswith(".gz"):
         f = gzip.open(fname, mode="wb")
@@ -39,6 +40,7 @@ def compressed_load(fname):
     fname : str
         From where the model shall be read.
     """
+    print "Load model"
     start = time.time()
     if fname.endswith(".gz"):
         f = gzip.open(fname, mode="rb")
