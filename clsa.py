@@ -29,7 +29,7 @@ class CLSATrainer(object):
         print "Stack auto encoder"
         [allhxs, Ws, Wt, G] = sda.mSDA(self.s_unlabeled.T, self.t_unlabeled.T, noise, r, layers)
         self.clf = svm.SVC(C=1000.0, cache_size=200, class_weight=None, coef0=0.0, degree=3,
-                  gamma=0.0, probability=False, shrinking=True, tol=0.001, verbose=False)
+                  probability=False, shrinking=True, tol=0.001, verbose=False)
         allhxtrain = sda.transformsource(self.s_train.T,Ws,layers)
         print "Train SVM"
         self.clf.fit(allhxtrain.T, np.ravel(self.s_train_labels))
@@ -37,13 +37,13 @@ class CLSATrainer(object):
 
 
 def train_args_parser():
-    description = """Prefixes `s_` and `t_` refer to source and target language
-        , resp. Train and unlabeled files are expected to be in Bag-of-Words format.
+    description = """Prefixes `s_` and `t_` refer to source and target language,\
+     resp. Train and unlabeled files are expected to be in Bag-of-Words format.
         """
     parser = optparse.OptionParser(usage="%prog [options] " \
                                          "s_lang t_lang s_train_file " \
                                          "s_unlabeled_file t_unlabeled_file " \
-                                         "dict_file model_file",
+                                         "model_file",
                                    description=description)
 
     parser.add_option("-r",

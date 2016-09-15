@@ -61,10 +61,10 @@ def mSDA(xxs, xxt, noise,Lambda,layers):
     for layer in range(0,layers):
         print "layer ",layer+1
         start = time.time()
-        print "Computing hidden layer source"
+        print "Compute hidden layer source"
         [newhxs, W1] = mDA(prevhxs,noise,Lambda)
         Ws[layer] = W1
-        print "Computing hidden layer target"
+        print "Compute hidden layer target"
         [newhxt, W2] = mDA(prevhxt,noise,Lambda)
         Wt[layer] = W2
         print "Learn maping"
