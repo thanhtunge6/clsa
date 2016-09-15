@@ -49,56 +49,48 @@ study can be found here [#f1]_.
 clsa_train
 ??????????
 
-Training script for CLSCL. See `./clsa_train --help` for further details. 
+Training script for CLSA. See `./clsa_train --help` for further details. 
 
 Usage::
 
-    $ ./clscl_train en de cls-acl10-processed/en/books/train.processed cls-acl10-processed/en/books/unlabeled.processed cls-acl10-processed/de/books/unlabeled.processed cls-acl10-processed/dict/en_de_dict.txt model.bz2 --phi 30 --max-unlabeled=50000 -k 100 -m 450 --strategy=parallel
+    $ python ./clsa_train en de cls-acl10-processed/en/books/train.processed cls-acl10-processed/de/books/trans/en/books/test.processed cls-acl10-processed/de/books/test.processed model.bz2 -r 0.1 --layer 1 -n 0.8
 
-    |V_S| = 64682
-    |V_T| = 106024
-    |V| = 170706
-    |s_train| = 2000
-    |s_unlabeled| = 50000
-    |t_unlabeled| = 50000
-    debug: DictTranslator contains 5012 translations.
-    mutualinformation took 5.624 sec
-    select_pivots took 7.197 sec
-    |pivots| = 450
-    create_inverted_index took 59.353 sec
-    Run joblib.Parallel
-    [Parallel(n_jobs=-1)]: Done   1 out of 450 |elapsed:    9.1s remaining: 67.8min
-    [Parallel(n_jobs=-1)]: Done   5 out of 450 |elapsed:   15.2s remaining: 22.6min
-    [..]
-    [Parallel(n_jobs=-1)]: Done 449 out of 450 |elapsed: 14.5min remaining:    1.9s
-    train_aux_classifiers took 881.803 sec
-    density: 0.1154
-    Ut.shape = (100,170706)
-    learn took 903.588 sec
-    project took 175.483 sec
 
-.. note:: If you have access to a hadoop cluster, you can use `--strategy=hadoop` to train the pivot classifiers even faster, however, make sure that the hadoop nodes have Bolt (feature-mask branch) [#f3]_ installed. 
+    vocabulary took 0.065 sec
+    vocabulary took 0.072 sec
+    |V_S| = 5271
+    |V_T| = 5936
+    load took 0.373 sec
+    classes = {negative,positive}
+    |s_train| = 1000
+    load took 0.261 sec
+    load took 0.265 sec
+    Stack auto encoder
+    Stacking hidden layers...
+    layer 0
+    Learn mapping
+    layer  1
+    Compute hidden layer source
+    Compute hidden layer target
+    Learn maping
+    Layer  1  took  20.8635218143  seconds
+    Train SVM
+    Save model
+
 
 clsa_predict
 ????????????
 
-Prediction script for CLSCL.
+Prediction script for CLSA.
 
 Usage::
 
-    $ ./clscl_predict cls-acl10-processed/en/books/train.processed model.bz2 cls-acl10-processed/de/books/test.processed 0.01
-    |V_S| = 64682
-    |V_T| = 106024
-    |V| = 170706
-    load took 0.681 sec
-    load took 0.659 sec
-    classes = {negative,positive}
-    project took 2.498 sec
-    project took 2.716 sec
-    project took 2.275 sec
-    project took 2.492 sec
-    ACC: 83.05
-    
+    $ python ./clsa_test model.bz2 cls-acl10-processed/de/books/test.processed
+
+    Load model
+    load took 0.274 sec
+    Accuracy:  0.75125
+
 .. _References:
 References
 ----------
