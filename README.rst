@@ -7,7 +7,7 @@ TOC
   * Requirements_
   * Installation_
   * Documentation_
-     - Hybrid  Heterogeneous  Transfer  Learning_
+     - [Hybrid  Heterogeneous  Transfer  Learning]_
      - NER_
   * References_
 
@@ -104,6 +104,6 @@ Usage::
 References
 ----------
 
-.. [#f1] http://www.webis.de/research/corpora/corpus-webis-cls-10/cls-acl10-processed.tar.gz
+.. [#f1] http://www.uni-weimar.de/en/media/chairs/webis/corpora/corpus-webis-cls-10/
 
 .. [Joey2014] Zhou, P. T., Pan, S. J., Tsang I. W. and Yan Y. `Hybrid Heterogeneous Transfer Learning through Deep Learning <https://www.aaai.org/ocs/index.php/AAAI/AAAI14/paper/viewFile/8181/8869>`_. In Proceedings of AAAI 2014.
