@@ -69,7 +69,7 @@ def mSDA(xxs, xxt, noise,Lambda,layers):
         Wt[layer] = W2
         print "Learn maping"
         G[layer+1]=mapping(newhxs,newhxt,0.1)
-        print 'Layer ',layer+1,' took ',time.time()-start," seconds"
+        print 'Layer ',layer+1,' took ',time.time()-start," sec"
         allhxs = np.concatenate((allhxs, newhxs), axis=0)
         allhxt = np.concatenate((allhxt, newhxt), axis=0)
         prevhxs = newhxs

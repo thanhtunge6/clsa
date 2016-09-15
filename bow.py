@@ -18,7 +18,7 @@ def vectorize(tokens, voc):
     doc = sorted(doc)
     return doc
 
-@timeit
+
 def vocabulary(*bowfnames, **kargs):
     """
     it supports the following kargs:
@@ -47,7 +47,7 @@ def disjoint_voc(s_voc, t_voc):
     t_voc = dict(zip(t_voc,range(m)))
     return s_voc, t_voc, len(s_voc) + len(t_voc)
 
-@timeit
+
 def load(fname, voc, maxlines=-1):
     """
     """

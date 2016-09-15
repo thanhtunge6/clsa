@@ -1,23 +1,8 @@
-#!/usr/bin/python
-#
-# Author: Peter Prettenhofer <peter.prettenhofer@gmail.com>
-#
-# License: BSD Style
-
-"""
-util
-====
-
-A collection of utilities for text processing and debugging.
-"""
-
 import sys
 import time
 import re
 
 from externals.bolt.io import MemoryDataset
-
-__author__ = "Peter Prettenhofer <peter.prettenhofer@gmail.com>"
 
 
 def timeit(func):

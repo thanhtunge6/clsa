@@ -117,7 +117,6 @@ def train():
     model.t_voc = t_voc
     model.dim = dim
     model.layers = options.layers
-    print "Save model"
     compressed_dump(argv[5], model)
 
 

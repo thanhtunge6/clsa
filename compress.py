@@ -1,6 +1,7 @@
 import bz2
 import gzip
 import cPickle as pickle
+import time
 
 
 def compressed_dump(fname, model):
@@ -16,6 +17,7 @@ def compressed_dump(fname, model):
     model : object
         The object to be pickeled.
     """
+    start = time.time()
     if fname.endswith(".gz"):
         f = gzip.open(fname, mode="wb")
     elif fname.endswith(".bz2"):
@@ -24,6 +26,7 @@ def compressed_dump(fname, model):
         f = open(fname, "wb")
     pickle.dump(model, f, pickle.HIGHEST_PROTOCOL)
     f.close()
+    print "Writing model took ",time.time()-start," sec"
 
 
 def compressed_load(fname):
@@ -36,6 +39,7 @@ def compressed_load(fname):
     fname : str
         From where the model shall be read.
     """
+    start = time.time()
     if fname.endswith(".gz"):
         f = gzip.open(fname, mode="rb")
     elif fname.endswith(".bz2"):
@@ -44,4 +48,5 @@ def compressed_load(fname):
         f = open(fname, "rb")
     model = pickle.load(f)
     f.close()
+    print "Loading model took ", time.time() - start, " sec"
     return model
