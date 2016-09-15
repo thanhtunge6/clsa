@@ -54,22 +54,22 @@ def mSDA(xxs, xxt, noise,Lambda,layers):
     allhxt = xxs
     G = np.empty(layers+1, dtype=object)
     print "layer 0"
-    print "mapping"
+    print "Learn mapping"
     G[0]=mapping(xxs,xxt,0.1)
     Ws = np.empty(layers, dtype=object)
     Wt = np.empty(layers, dtype=object)
     for layer in range(0,layers):
         print "layer ",layer+1
         start = time.time()
-        print "auto encoder source"
+        print "Computing hidden layer source"
         [newhxs, W1] = mDA(prevhxs,noise,Lambda)
         Ws[layer] = W1
-        print "auto encoder target"
+        print "Computing hidden layer target"
         [newhxt, W2] = mDA(prevhxt,noise,Lambda)
         Wt[layer] = W2
-        print "mapping"
+        print "Learn maping"
         G[layer+1]=mapping(newhxs,newhxt,0.1)
-        print time.time()-start," seconds"
+        print 'Layer ',layer+1,' took ',time.time()-start," seconds"
         allhxs = np.concatenate((allhxs, newhxs), axis=0)
         allhxt = np.concatenate((allhxt, newhxt), axis=0)
         prevhxs = newhxs

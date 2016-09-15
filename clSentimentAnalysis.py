@@ -7,9 +7,9 @@ from sklearn import svm
 
 def train():
 
-    fname_s_train = 'st.txt'
-    fname_s_unlabeled = 'su.txt'
-    fname_t_unlabeled = 'tu.txt'
+    fname_s_train = '/home/tung/Desktop/cls-acl10-processed/st.txt'
+    fname_s_unlabeled = '/home/tung/Desktop/cls-acl10-processed/su.txt'
+    fname_t_unlabeled = '/home/tung/Desktop/cls-acl10-processed/tu.txt'
     # fname_s_train = 'cls-acl10-processed/en/books/train.processed'
     # fname_s_unlabeled = 'cls-acl10-processed/de/books/trans/en/books/test.processed'
     # fname_t_unlabeled = 'cls-acl10-processed/de/books/test.processed'
@@ -32,7 +32,7 @@ def train():
     [allhxs, Ws, Wt, G] = sda.mSDA(s_unlabeled.T, t_unlabeled.T, 0.8, 0.1, 1)
     print "end", allhxs.shape
     clf = svm.SVC(C=1000.0, cache_size=200, class_weight=None, coef0=0.0, degree=3,
-                  gamma=0.0, probability=False, shrinking=True, tol=0.001, verbose=False)
+                  probability=False, shrinking=True, tol=0.001, verbose=False)
     transformtrain = sda.transformsource(s_train.T, Ws, 1)
     print "learn svm"
     clf.fit(transformtrain.T, np.ravel(labels))

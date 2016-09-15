@@ -1,9 +1,3 @@
-#!/usr/bin/python
-#
-# Author: Peter Prettenhofer <peter.prettenhofer@gmail.com>
-#
-# License: BSD Style
-
 import numpy as np
 
 from collections import defaultdict

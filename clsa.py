@@ -26,6 +26,7 @@ class CLSATrainer(object):
         self.t_unlabeled = t_unlabeled
 
     def train(self, r, layers, noise):
+        print "Stack auto encoder"
         [allhxs, Ws, Wt, G] = sda.mSDA(self.s_unlabeled.T, self.t_unlabeled.T, noise, r, layers)
         self.clf = svm.SVC(C=1000.0, cache_size=200, class_weight=None, coef0=0.0, degree=3,
                   gamma=0.0, probability=False, shrinking=True, tol=0.001, verbose=False)
@@ -128,33 +129,9 @@ def predict_args_parser():
     , resp. Train and unlabeled files are expected to be in Bag-of-Words format.
     """
     parser = optparse.OptionParser(usage="%prog [options] " \
-                                   "s_train_file " \
                                    "model_file " \
                                    "t_test_file",
                                    description=description)
-
-
-    parser.add_option("-R", "--repetition",
-                      dest="repetition",
-                      help="Repeat training `repetition` times and " \
-                      "report avg. error.",
-                      default=10,
-                      metavar="int",
-                      type="int")
-
-    parser.add_option("-r", "--reg",
-                      dest="reg",
-                      help="regularization parameter lambda. ",
-                      default=0.01,
-                      metavar="float",
-                      type="float")
-
-    parser.add_option("--n-jobs",
-                      dest="n_jobs",
-                      help="The number of processes to fork.",
-                      default=1,
-                      metavar="int",
-                      type="int")
 
     return parser
 
