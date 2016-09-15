@@ -56,15 +56,10 @@ Usage::
     $ python ./clsa_train en de cls-acl10-processed/en/books/train.processed cls-acl10-processed/de/books/trans/en/books/test.processed cls-acl10-processed/de/books/test.processed model.bz2 -r 0.1 --layer 1 -n 0.8
 
 
-    vocabulary took 0.065 sec
-    vocabulary took 0.072 sec
     |V_S| = 5271
     |V_T| = 5936
-    load took 0.373 sec
     classes = {negative,positive}
     |s_train| = 1000
-    load took 0.261 sec
-    load took 0.265 sec
     Stack auto encoder
     Stacking hidden layers...
     layer 0
@@ -73,9 +68,12 @@ Usage::
     Compute hidden layer source
     Compute hidden layer target
     Learn maping
-    Layer  1  took  20.8635218143  seconds
+    Layer  1  took  21.1619780064  sec
     Train SVM
-    Save model
+    Learning SVM took  8.46254491806 sec
+    Write model
+    Writing model took  138.033488989  sec
+
 
 
 clsa_predict
@@ -88,8 +86,11 @@ Usage::
     $ python ./clsa_test model.bz2 cls-acl10-processed/de/books/test.processed
 
     Load model
-    load took 0.274 sec
+    Loading model took  61.9274499416  sec
+    Transform target data
+    Predict labels
     Accuracy:  0.75125
+
 
 .. _References:
 References
