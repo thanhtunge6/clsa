@@ -8,7 +8,6 @@ TOC
   * Installation_
   * Documentation_
      - HHTL_
-     - NER_
   * References_
 
 .. _Requirements:
@@ -16,7 +15,7 @@ TOC
 Requirements
 ------------
 
-To install nut you need:
+To install clsa you need:
 
    * Python 2.7
    * Numpy (>= 1.11)
@@ -41,16 +40,16 @@ Documentation
 HHTL
 ~~~~
 
-An implementation of Hybrid  Heterogeneous  Transfer  Learning through Deep Learning
+An implementation of Hybrid  Heterogeneous  Transfer  Learning through Deep Learning.
 See [Joey2014]_ for a detailed description.
 
 The data for cross-language sentiment classification that has been used in the above
 study can be found here [#f1]_.
 
-clscl_train
-???????????
+clsa_train
+??????????
 
-Training script for CLSCL. See `./clscl_train --help` for further details. 
+Training script for CLSCL. See `./clsa_train --help` for further details. 
 
 Usage::
 
@@ -80,8 +79,8 @@ Usage::
 
 .. note:: If you have access to a hadoop cluster, you can use `--strategy=hadoop` to train the pivot classifiers even faster, however, make sure that the hadoop nodes have Bolt (feature-mask branch) [#f3]_ installed. 
 
-clscl_predict
-?????????????
+clsa_predict
+????????????
 
 Prediction script for CLSCL.
 
