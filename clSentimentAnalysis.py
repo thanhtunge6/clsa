@@ -13,7 +13,7 @@ def train():
     # fname_s_train = 'cls-acl10-processed/en/books/train.processed'
     # fname_s_unlabeled = 'cls-acl10-processed/de/books/trans/en/books/test.processed'
     # fname_t_unlabeled = 'cls-acl10-processed/de/books/test.processed'
-    max_unlabeled = 50000
+    max_unlabeled = 5000
 
 
     # Create vocabularies
