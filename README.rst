@@ -7,7 +7,7 @@ TOC
   * Requirements_
   * Installation_
   * Documentation_
-     - [Hybrid  Heterogeneous  Transfer  Learning]_
+     - HHTL_
      - NER_
   * References_
 
@@ -36,7 +36,7 @@ To clone the repository run,
 Documentation
 -------------
 
-.. _Hybrid  Heterogeneous  Transfer  Learning:
+.. _HHTL:
 
 HHTL
 ~~~~
