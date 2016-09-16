@@ -7,9 +7,9 @@ from sklearn import svm
 
 def train():
 
-    fname_s_train = 'st.txt'
-    fname_s_unlabeled = 'su.txt'
-    fname_t_unlabeled = 'tu.txt'
+    fname_s_train = '/home/tung/Desktop/cls-acl10-processed/st.txt'
+    fname_s_unlabeled = '/home/tung/Desktop/cls-acl10-processed/su.txt'
+    fname_t_unlabeled = '/home/tung/Desktop/cls-acl10-processed/tu.txt'
     # fname_s_train = 'cls-acl10-processed/en/books/train.processed'
     # fname_s_unlabeled = 'cls-acl10-processed/de/books/trans/en/books/test.processed'
     # fname_t_unlabeled = 'cls-acl10-processed/de/books/test.processed'

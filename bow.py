@@ -2,8 +2,6 @@ import numpy as np
 
 from collections import defaultdict
 
-from util import timeit
-from externals import bolt
 from scipy.sparse import csr_matrix
 
 def parse_bow(line):
@@ -59,7 +57,7 @@ def load(fname, voc, maxlines=-1):
                 break
             label, tokens = parse_bow(line)
             doc = vectorize(tokens, voc)
-            x = np.array(doc, dtype = bolt.sparsedtype)
+            x = np.array(doc, dtype=np.dtype("u4,f4"))
             norm = np.linalg.norm(x['f1'])
             if norm > 0.0:
                 x['f1'] /= norm
