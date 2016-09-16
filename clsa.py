@@ -158,7 +158,7 @@ def predict():
     dim = clsa_model.dim
     layers = clsa_model.layers
 
-    t_test, labels, classes = load(fname_t_test, t_voc, dim)
+    t_test, labels, classes = load(fname_t_test,t_voc, dim)
     print "Transform target data"
     transformhxt = sda.transformtarget(t_test.T, G, Wt, layers)
     print "Predict labels"
